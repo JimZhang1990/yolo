@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO旅行生成器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">🌍 YOLO旅行生成器</h1>
+            
+            <form id="travelForm" class="space-y-6">
+                <!-- 出发地 -->
+                <div>
+                    <label for="departure" class="block text-sm font-medium text-gray-700 mb-2">出发地</label>
+                    <input type="text" id="departure" name="departure" placeholder="如：上海" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+
+                <!-- 出发日期 -->
+                <div>
+                    <label for="departureDate" class="block text-sm font-medium text-gray-700 mb-2">出发日期</label>
+                    <input type="date" id="departureDate" name="departureDate" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+
+                <!-- 假期天数 -->
+                <div>
+                    <label for="days" class="block text-sm font-medium text-gray-700 mb-2">假期天数</label>
+                    <input type="number" id="days" name="days" value="6" min="1" max="15" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+
+                <!-- 总预算 -->
+                <div>
+                    <label for="budget" class="block text-sm font-medium text-gray-700 mb-2">总预算（元）</label>
+                    <input type="number" id="budget" name="budget" value="3000" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+
+                <!-- 旅行风格 -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-3">旅行风格（可多选）</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" name="style" value="自然风景" class="rounded text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">🏞️ 自然风景</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" name="style" value="美食" class="rounded text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">🍜 美食</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" name="style" value="夜生活" class="rounded text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">🌃 夜生活</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" name="style" value="小众冷门" class="rounded text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">🔍 小众冷门</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" name="style" value="热门城市" class="rounded text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">🏙️ 热门城市</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" name="style" value="文艺复古" class="rounded text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">🎨 文艺复古</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" name="style" value="探险" class="rounded text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm text-gray-700">⛰️ 探险</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 生成按钮 -->
+                <button type="button" id="generateBtn" 
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition duration-200 transform hover:scale-105">
+                    🎯 生成旅行计划
+                </button>
+            </form>
+
+            <!-- 结果展示区域 -->
+            <div id="resultContainer" class="mt-8 hidden">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">📋 生成的旅行计划数据：</h2>
+                <pre id="resultJson" class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto border"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="generate.js"></script>
+</body>
+</html>
