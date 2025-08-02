@@ -1,7 +1,7 @@
 // YOLO旅行目的地生成器 - 主要逻辑文件（集成AI版本）
 
 // Cloudflare Worker API端点
-const WORKER_API_URL = 'https://your-worker.your-subdomain.workers.dev'; // 替换为您的Worker URL
+const WORKER_API_URL = 'https://yolo-travel-worker.zhen-zhang-investing.workers.dev';
 
 // 旅行目的地数据库（作为备用）
 const destinations = {
